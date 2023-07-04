@@ -1,6 +1,6 @@
 package coffee;
 
-public class Coffee {
+public abstract class Coffee {
     public void grindCoffee() {
         // перемалываем кофе
     }
