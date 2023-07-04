@@ -1,17 +1,21 @@
+import javax.xml.crypto.dsig.SignedInfo;
+
 /*
 + простота и прозрачность кода
-+ Потокобезопасность
 + высокая производительность в многопоточной среде
-
-- Не ленивая инициализация
++ ленивая инициализация
+- не Потокобезопасно
  */
 public class Singleton {
 
-    private static final Singleton INSTANCE = new Singleton();
+    private static Singleton INSTANCE;
     private Singleton() {
 
     }
     public static Singleton getInstance() {
+        if (INSTANCE == null) {
+            INSTANCE = new Singleton();
+        }
         return INSTANCE;
     }
 }
