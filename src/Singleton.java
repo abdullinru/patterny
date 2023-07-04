@@ -2,19 +2,27 @@ import javax.xml.crypto.dsig.SignedInfo;
 
 /*
 + простота и прозрачность кода
-- низкая  производительность в многопоточной среде
+- высокая   производительность в многопоточной среде
 + ленивая инициализация
 + Потокобезопасно
+
+- не поддерживается на версиях java ниже 1.5
  */
 public class Singleton {
 
-    private static Singleton INSTANCE;
+    private static volatile Singleton INSTANCE;
+
     private Singleton() {
 
     }
-    public static synchronized Singleton getInstance() {
+
+    public static Singleton getInstance() {
         if (INSTANCE == null) {
-            INSTANCE = new Singleton();
+            synchronized (Singleton.class) {
+                if (INSTANCE == null) {
+                    INSTANCE = new Singleton();
+                }
+            }
         }
         return INSTANCE;
     }
