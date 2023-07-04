@@ -2,24 +2,15 @@ package coffee;
 
 public class CoffeeShop {
 
+    private final SimpleCoffeeFactory coffeeFactory;
+
+    public CoffeeShop(SimpleCoffeeFactory coffeeFactory) {
+        this.coffeeFactory = coffeeFactory;
+    }
+
     public Coffee orderCoffee(CoffeeType type) {
-        Coffee coffee = null;
+        Coffee coffee = coffeeFactory.createCoffee(type);
 
-        switch (type) {
-
-            case EXPRESSO:
-                coffee = new Expresso();
-                break;
-            case AMERICANO:
-                coffee = new Americano();
-                break;
-            case CAFFE_LATTE:
-                coffee = new CaffeLatte();
-                break;
-            case CAPPUCCINO:
-                coffee = new Cappuccino();
-                break;
-        }
         coffee.grindCoffee();
         coffee.makeCoffee();
         coffee.poutIntoCup();
