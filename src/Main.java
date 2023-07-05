@@ -1,3 +1,4 @@
+import adapter.TotalTime;
 import battle.factory.GermanWarriorFactory;
 import battle.factory.RussianWarriorFactory;
 import battle.factory.WarriorFactory;
