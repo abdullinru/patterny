@@ -6,6 +6,8 @@ import coffee.AmericanCoffeeShop;
 import coffee.CoffeeShop;
 import coffee.CoffeeType;
 import coffee.ItalianCoffeeShop;
+import proxy.MyBank;
+import proxy.MyBankProxy;
 
 public class Main {
     public static void main(String[] args) {
@@ -25,5 +27,11 @@ public class Main {
         factory.createArcher();
         factory.createCavalry();
         factory.createPekchota();
+
+        MyBank myBank = new MyBank();
+        MyBankProxy myBankProxy = new MyBankProxy(myBank);
+        myBankProxy.getUserMoney();
+        myBankProxy.setUserMoney();
+
     }
 }
